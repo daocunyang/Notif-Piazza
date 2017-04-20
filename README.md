@@ -6,7 +6,8 @@ A Piazza Notification Tool for Relevant Topics based on <a href="https://github.
   project.py: the main program.<br />
   prepare.txt: the first line is a comma-separated string that represent the topics
           that the user would like to be <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notified about; the second line is the id of the course; the third line is the id of the latest post that the <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;program has checked, so that in subsequent iterations the program will only look at later posts. <br/>
-  log.txt: log file. 
+  log.txt: log file. <br />
+  test.txt: for testing purpose only. Will not be used in production environment.
 
 
 <h2>Installation & Usage</h2>
