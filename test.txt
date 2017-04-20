@@ -1,0 +1,31 @@
+when are the TA office hours?
+When are the regular meeting times ?
+https://piazza.com/class/iy0x6bnqsx33fe?cid=336 &#64;336
+Got stop words in result
+For the top words I got, I have stop words like &#34;-&#34; and &#34;.&#34; in my result. I put the stopword file in the same directory as config file,which should be correct. Is there anything I did wrong or I should just put it on result or I should remove it?
+TA please confirm that stop words like &#34;-&#34; can appear in the final result.
+Can TA confirm this?
+number of iterations newgg
+Can someone share the number of iterations expected for the newegg dataset?
+---------
+Log likelihood is probably better than the # of iterations.
+about 300 when 5 topics for mine
+was it around 140 iterations (LL -7e7) for 3 topics? 
+where do the documents come from?
+when I try to run the lda model for question 2.2
+
+I get
+
+========== doc_id 0 topic distribution ==========[ 0.00098425  0.00098425  0.719488    0.00098425  0.276575    0.00098425]========== doc_id 1 topic distribution ==========[  1.06013000e-01   1.10759000e-02   2.80063000e-01   5.27426000e-04   6.01793000e-01   5.27426000e-04]========== doc_id 2 topic distribution ==========[ 0.0164577  0.659091   0.0007837  0.306426   0.0164577  0.0007837]========== doc_id 3 topic distribution ==========[  5.86166000e-04   4.74795000e-02   6.33646000e-01   2.98945000e-02   2.98945000e-02   2.58499000e-01]========== doc_id 4 topic distribution ==========[ 0.00058962  0.00058962  0.554835    0.0241745   0.419222    0.00058962]
+
+I understand that the topic of doc_id 1 is highly related to the topic group 2.
+But I am not sure where the documents come from and how they get divided.
+Is there a way to check the contents of the document?
+All the data you have is in the abstract/ or egg/ or..  folder. They are in specific format, you can google about how to open .dat file.
+Formatting question MP4
+Do we have to exactly match the submission_example.txt for the file that we have to submit?
+
+Can there be an empty line between two different topics?
+
+Or do we have to put everything all sticked together?
+There should not be an empty line, you can simply copy the example file given to us and replace it.
