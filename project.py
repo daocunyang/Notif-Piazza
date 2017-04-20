@@ -6,7 +6,7 @@ import re, smtplib, sys, time
 
 '''
     To receive email notifications, please correctly fill in your credentials below, and notice:
-    1) Do not use illinois.edu email account
+    1) Do not use illinois.edu email account as sender
     2) Ensure 2-Step Verification is turned OFF
     3) Go to https://myaccount.google.com/lesssecureapps, and turn on the option to "Allow less secure apps"
 '''
