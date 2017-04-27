@@ -102,7 +102,7 @@ if __name__ == "__main__":
     with open("test.txt", "w") as f:
         max_cid = 0
         # get limit+1 posts. E.g. limit=10 will only get you 9 posts
-        posts = course.iter_all_posts(limit=21)
+        posts = course.iter_all_posts(limit=51)
 
         for post in posts:
             if "#pin" in str(post["history"][0]):
@@ -153,7 +153,8 @@ if __name__ == "__main__":
                 score = pure_score(topic, text_vector)
                 scores.append(score)
             # Could possibly add some weights for each topic
-            result.append([sum(scores), text_vector])
+            if sum(scores)!= 0:
+                result.append([sum(scores), text_vector])
     # where the results are outputed
     print sorted(result, key = lambda x : x[0], reverse=True)
 

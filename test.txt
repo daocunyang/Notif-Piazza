@@ -1,31 +1,36 @@
-when are the TA office hours?
-When are the regular meeting times ?
-https://piazza.com/class/iy0x6bnqsx33fe?cid=336 &#64;336
-Got stop words in result
-For the top words I got, I have stop words like &#34;-&#34; and &#34;.&#34; in my result. I put the stopword file in the same directory as config file,which should be correct. Is there anything I did wrong or I should just put it on result or I should remove it?
-TA please confirm that stop words like &#34;-&#34; can appear in the final result.
-Can TA confirm this?
-number of iterations newgg
-Can someone share the number of iterations expected for the newegg dataset?
----------
-Log likelihood is probably better than the # of iterations.
-about 300 when 5 topics for mine
-was it around 140 iterations (LL -7e7) for 3 topics? 
-where do the documents come from?
-when I try to run the lda model for question 2.2
+mp5 due date- april 30 or may 1?
+On the instructions PDF it says due April 30.
+However, the piazza says may 1
+Also, the deadline on compass2g is May 1. I would assume it is May 1.
+It is not time-consuming at all. just run the command and record the stdout
+Take May 1 since that is the due date on compass.
+We&#39;ll use the deadline on compass, which is May 1
+Question about bigram in MP5
+For Mp5, if I simply change ngram from 1 to 2  in config.toml, 
+will the model only analyze bigram with no considering on unigram anymore?
+This is correct. In some sense, bigram contains some information about unigram.
+I solved already by adding another column of analyzer consisting ngram=2 inside config.toml
+Reached an accuracy of 90.9%, don&#39;t know if it is correct
+:) Interesting, don&#39;t know if the metapy just picks the first one, or pick both of them. That would be unigram &#43; bigram.
+you can find more about meta configuration here: https://meta-toolkit.org/analyzers-filters-tutorial.html
 
-I get
-
-========== doc_id 0 topic distribution ==========[ 0.00098425  0.00098425  0.719488    0.00098425  0.276575    0.00098425]========== doc_id 1 topic distribution ==========[  1.06013000e-01   1.10759000e-02   2.80063000e-01   5.27426000e-04   6.01793000e-01   5.27426000e-04]========== doc_id 2 topic distribution ==========[ 0.0164577  0.659091   0.0007837  0.306426   0.0164577  0.0007837]========== doc_id 3 topic distribution ==========[  5.86166000e-04   4.74795000e-02   6.33646000e-01   2.98945000e-02   2.98945000e-02   2.58499000e-01]========== doc_id 4 topic distribution ==========[ 0.00058962  0.00058962  0.554835    0.0241745   0.419222    0.00058962]
-
-I understand that the topic of doc_id 1 is highly related to the topic group 2.
-But I am not sure where the documents come from and how they get divided.
-Is there a way to check the contents of the document?
-All the data you have is in the abstract/ or egg/ or..  folder. They are in specific format, you can google about how to open .dat file.
-Formatting question MP4
-Do we have to exactly match the submission_example.txt for the file that we have to submit?
-
-Can there be an empty line between two different topics?
-
-Or do we have to put everything all sticked together?
-There should not be an empty line, you can simply copy the example file given to us and replace it.
+As is stated in the instruction, &#34;to also use bigrams instead of purely unigram words&#34;, so you are supposed to use both unigram and bigrams here.
+I see, so would you want us to use bigram only or bigram &#43; unigram?
+same question
+yes
+wait, which one is it?
+both. please refer to the answer above and read the instruction carefully
+What is fold in support vector machine?
+after the video, still not very clear.
+Could you elaborate? 
+Yeah, sure. It&#39;s actually about MP5. If I understand correctly, 5-fold cross validation means, we will divide the data into 5 parts, and use four of them to train, left one to test
+But does the number 5 or 10 really matter when testing model?
+It essentially adds randomness into the trading data and testing data. 
+But does 10-fold always give higher accuracy than 5-fold?
+even though in MP, I got higher accuracy for 10-fold
+Yes and No. the whole idea is randomly shuffle the data, so you don&#39;t overfit your training model, which supposes to do better when doing testing.   If 5-fold is random enough, 10-fold is not necessary.   10 fold trains five more times than 5 fold, supposedly adding more randomness, but not always. It also increases training time, this is your trade off.
+Umm, so you are saying that if you increase to 10 fold, the accuracy has high change to increase, however we may might overfitting problems as a result of the increase. is that correct?
+The whole point of crossing foldering is to a better model that does not overfit.Cross fold is a tuning method, can be used in knn, randomforest, all the machine learning methods you can think of.If you are interested in this topic, for your reference a good book on machine learning from statistics point of view is called: the elements of statistical learning,    From. Bayesian approach, a good book: pattern recognition and machine learning.      
+Okay, I will check it out! Thank you!
+Yes, that&#39;s what it means.  It usually uses random shuffle to do it. But in this mp(not confirmed), it seems to use finds sampling to sample the data.
+Gibbs sampling typo:)
