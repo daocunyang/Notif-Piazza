@@ -1,0 +1,53 @@
+*Title*
+mp5 accuracy=recall ?
+*Main*
+My question is about the last two lines of output of the command python cls_nb.py config.toml 5. The &#34;overall accuracy&#34; printed in the last line equals the &#34;total recall&#34; instead of &#34;total precision&#34; in the 2nd last line. Why? Shouldn&#39;t the overall accuracy equal the total precision instead of recall?
+*Follows*
+The program outputs overall accuracy at the last line.
+*Title*
+Confusion Matrix Formatting
+*Main*
+When I run the Naive Bayes command for the MP, I get some weird characters as show below (the ?&#39;s and the m&#39;s)
+
+These seem to also mess up the formatting of the confusion matrix, making it hard to read. Is there any way to fix this? The headers for the summary results and the total row is also like this.
+*Follows*
+You could try to print the result to a file to see whether the formatting is correct.
+python cls_nb.py config.toml 5 &gt; output.txt
+That gets rid of the ?&#39;s, but still has the brackets and weird numbers when I pipe it to a fileIt&#39;s probably just the output encoding. You can ignore it.Yes, that&#39;s to make the number shown in bold type.
+*Title*
+Metapy problem in MP5
+*Main*
+
+The picture above is my error when running either of the two python lines involving cls_nb.py or cls_svm.py (python cls_nb.py config.toml 5, for example). It looks like there&#39;s something wrong with metapy installation here, although I have updated the metapy through pip install. Anyone else having this issue? (I will use ews if no one can help me with this :( ). Thank you!
+
+*Follows*
+I think your windows system is missing a specific DLL, How do I include it? Use ews. You won&#39;t meet any problem and you will feel happy.This is where nobody knows for sure, it may just be that you are missing a DLL or metapy does not support it. So Yeah, use ews or install ubuntu vm on your own machine.
+*Title*
+Can&#39;t start a new MP5
+*Main*
+I want to submit a newer version of my mp5-results.txt, but there&#39;s no Start New button like there was for MP4. Can we get that? (Or is there another way to submit it again?)
+*Follows*
+Fixed now. Please try again.Works now! Thank you. :)
+*Title*
+mp5 due date- april 30 or may 1?
+*Main*
+On the instructions PDF it says due April 30.
+However, the piazza says may 1
+*Follows*
+Also, the deadline on compass2g is May 1. I would assume it is May 1.
+It is not time-consuming at all. just run the command and record the stdoutTake May 1 since that is the due date on compass.We&#39;ll use the deadline on compass, which is May 1
+*Title*
+Question about bigram in MP5
+*Main*
+For Mp5, if I simply change ngram from 1 to 2  in config.toml, 
+will the model only analyze bigram with no considering on unigram anymore?
+*Follows*
+This is correct. In some sense, bigram contains some information about unigram.I solved already by adding another column of analyzer consisting ngram=2 inside config.tomlReached an accuracy of 90.9%, don&#39;t know if it is correct:) Interesting, don&#39;t know if the metapy just picks the first one, or pick both of them. That would be unigram &#43; bigram.you can find more about meta configuration here: https://meta-toolkit.org/analyzers-filters-tutorial.html
+
+As is stated in the instruction, &#34;to also use bigrams instead of purely unigram words&#34;, so you are supposed to use both unigram and bigrams here.I see, so would you want us to use bigram only or bigram &#43; unigram?same questionyeswait, which one is it?both. please refer to the answer above and read the instruction carefully
+*Title*
+What is fold in support vector machine?
+*Main*
+after the video, still not very clear.
+*Follows*
+Could you elaborate? Yeah, sure. It&#39;s actually about MP5. If I understand correctly, 5-fold cross validation means, we will divide the data into 5 parts, and use four of them to train, left one to testBut does the number 5 or 10 really matter when testing model?It essentially adds randomness into the trading data and testing data. But does 10-fold always give higher accuracy than 5-fold?even though in MP, I got higher accuracy for 10-foldYes and No. the whole idea is randomly shuffle the data, so you don&#39;t overfit your training model, which supposes to do better when doing testing.   If 5-fold is random enough, 10-fold is not necessary.   10 fold trains five more times than 5 fold, supposedly adding more randomness, but not always. It also increases training time, this is your trade off.Umm, so you are saying that if you increase to 10 fold, the accuracy has high change to increase, however we may might overfitting problems as a result of the increase. is that correct?The whole point of crossing foldering is to a better model that does not overfit.Cross fold is a tuning method, can be used in knn, randomforest, all the machine learning methods you can think of.If you are interested in this topic, for your reference a good book on machine learning from statistics point of view is called: the elements of statistical learning,    From. Bayesian approach, a good book: pattern recognition and machine learning.      Okay, I will check it out! Thank you!Yes, that&#39;s what it means.  It usually uses random shuffle to do it. But in this mp(not confirmed), it seems to use finds sampling to sample the data.Gibbs sampling typo:)Thank you ! understand

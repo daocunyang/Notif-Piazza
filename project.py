@@ -2,7 +2,6 @@ from piazza_api import Piazza
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from mining import *
-
 import re, smtplib, sys, time
 
 '''
@@ -22,6 +21,13 @@ def cleanHtml(raw_text):
     cleantext = re.sub(cleanr, '', raw_text)
 
     return cleantext
+
+
+def generatequeries():
+    ## To do: return students' queries into each query per line in .txt
+    pass
+
+
 
 
 def sendEmail(course, cid):
@@ -99,7 +105,7 @@ if __name__ == "__main__":
     course = p.network(target_course)
 
     result = []
-    with open("test.txt", "w") as f:
+    with open("./postsdataset/transit.dat", "w") as f:
         max_cid = 0
         # get limit+1 posts. E.g. limit=10 will only get you 9 posts
         posts = course.iter_all_posts(limit=51)
@@ -120,13 +126,14 @@ if __name__ == "__main__":
             title = (content[0]["subject"])
             content = content[0]["content"]
             main_text = cleanHtml(content).encode("utf-8")
-
+            f.write("*Title*" + "\n")
             f.write(title + "\n")
+            f.write("*Main*"+ "\n")
             f.write(main_text + "\n")
 
             text_vector.append(title.strip())
             text_vector.append(main_text.strip())
-
+            f.write("*Follows*" + "\n")
             for child in post["children"]:
                 if child.has_key("history"):
                     tmp = child["history"][0]
@@ -134,20 +141,25 @@ if __name__ == "__main__":
                         text = tmp["content"].encode("utf-8")
                         text = cleanHtml(text)
                         text_vector.append(text.strip())
-                        f.write(text + "\n")
+                        # f.write(text + "\n")
+                        f.write(text)
 
                 if child.has_key("subject"):
                     text = child["subject"].encode("utf-8")
                     text = cleanHtml(text)
                     text_vector.append(text.strip())
-                    f.write(text + "\n")
+                    # f.write(text + "\n")
+                    f.write(text)
+
 
                 if child.has_key("children"):
                     for c in child["children"]:
                         text = c["subject"].encode("utf-8")
                         text = cleanHtml(text)
                         text_vector.append(text.strip())
-                        f.write(text + "\n")
+                        # f.write(text + "\n")
+                        f.write(text)
+            f.write("\n")
             scores = []
             for topic in topics:
                 score = pure_score(topic, text_vector)
@@ -158,8 +170,33 @@ if __name__ == "__main__":
     # where the results are outputed
     print sorted(result, key = lambda x : x[0], reverse=True)
 
+
+    # change format and transform to .dat for Metapy
+    with open("./postsdataset/transit.dat", "r") as f1:
+        with open("./postsdataset/postsdataset.dat", "w") as f2:
+            line = f1.readline()
+            while line:
+                if line == "*Title*\n":
+                    line = f1.readline()
+                    f2.write(line)
+                    line = f1.readline() ## To Main line
+                    line = f1.readline()
+                    while line and line != "*Follows*\n":
+                        f2.write(line.strip()+" ")
+                        line = f1.readline()
+                    f2.write("\n")
+                    line = f1.readline()
+                    while line and line != "*Title*\n":
+                        f2.write(line.strip("\n").strip()+" ")
+                        line = f1.readline()
+                    f2.write("\n")
+        f1.readline()
+        f1.close()
+    f2.close()
+
+
     f.close()
-    data[2] = max_cid
+    # data[2] = max_cid
     with open("prepare.txt", "w") as f:
         f.write(data[0])
         f.write(data[1])
