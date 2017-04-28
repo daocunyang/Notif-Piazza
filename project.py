@@ -2,7 +2,8 @@ from piazza_api import Piazza
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from mining import *
-import re, smtplib, sys, time
+from BM25 import *
+import re, smtplib, sys, time, os
 
 '''
     To receive email notifications, please correctly fill in your credentials below, and notice:
@@ -23,11 +24,11 @@ def cleanHtml(raw_text):
     return cleantext
 
 
-def generatequeries():
+def generatequeries(topics):
     ## To do: return students' queries into each query per line in .txt
-    pass
-
-
+    with open("queries.txt","w") as f:
+        for item in topics:
+            f.write(item+"\n")
 
 
 def sendEmail(course, cid):
@@ -96,6 +97,10 @@ if __name__ == "__main__":
                 sys.exit()
             # separating topics, fixed.
             topics = [x.strip() for x in data[0].split(',')]
+
+            ## Generate Queries File
+            generatequeries(topics)
+
             target_course = str(data[1].strip())
             last_cid = int(data[2].strip())
 
@@ -160,6 +165,7 @@ if __name__ == "__main__":
                         # f.write(text + "\n")
                         f.write(text)
             f.write("\n")
+
             scores = []
             for topic in topics:
                 score = pure_score(topic, text_vector)
@@ -169,6 +175,7 @@ if __name__ == "__main__":
                 result.append([sum(scores), text_vector])
     # where the results are outputed
     print sorted(result, key = lambda x : x[0], reverse=True)
+    f.close()
 
 
     # change format and transform to .dat for Metapy
@@ -191,11 +198,14 @@ if __name__ == "__main__":
                         line = f1.readline()
                     f2.write("\n")
         f1.readline()
-        f1.close()
-    f2.close()
+        f2.close()
+    f1.close()
 
+    # Remove transit dataset
+    os.remove("./postsdataset/transit.dat")
 
-    f.close()
+    BM25mining()
+    
     # data[2] = max_cid
     with open("prepare.txt", "w") as f:
         f.write(data[0])
@@ -204,3 +214,5 @@ if __name__ == "__main__":
         f.close()
 
     print "done!\n"
+
+
